@@ -42,23 +42,22 @@ class Node:
          res = res + self.PreorderTraversal(root.right)
       return res
    
-count = 0
+cards = []
 with open('input.txt','r') as reader:
     for line in reader:
-      # print(line)
-       cardnumber = line.lstrip("Card")[:4].strip()
-       numbers = line.lstrip("Card")[5:]
-       winningnumbers = numbers.partition("|")[0].split()
-       mynumbers = numbers.partition("|")[2].split()
-      # print(f"Card: {cardnumber}")
-      # print(f"Numbers: {numbers}")
-       card = Card(cardnumber,winningnumbers,mynumbers)
-       if(count == 0):
-           #print(str(card))
-           root = Node(card)
-       else:
-          root.insert(card)
-       count = count + 1
+      cardnumber = line.lstrip("Card")[:4].strip()
+      numbers = line.lstrip("Card")[5:]
+      winningnumbers = numbers.partition("|")[0].split()
+      mynumbers = numbers.partition("|")[2].split()
+      card = Card(cardnumber,winningnumbers,mynumbers)
+      cards.append(card)
+root = Node(cards[0])
+for card in cards:
+   for number in card.winningnumbers:
+      if number in card.mynumbers:
+         print(f"{number} was in my list")
+   #root.insert(card)
+   
 
 
 
@@ -72,6 +71,7 @@ root.insert(10)
 root.insert(19)
 root.insert(31)
 root.insert(42) """
-for item in root.PreorderTraversal(root):
-   print(str(item))
-   print("\n")
+#for item in root.PreorderTraversal(root):
+#   print(str(item))
+   
+#print(cards[1])
