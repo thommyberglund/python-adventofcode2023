@@ -1,0 +1,7 @@
+file = open('input.txt', 'r')
+lines = file.read().splitlines()
+seeds = lines[0].lstrip("seeds:").split()
+print(lines[0])
+print("Line 1: " + lines[1])
+print("Line 2: " + lines[2])
+print(seeds)
