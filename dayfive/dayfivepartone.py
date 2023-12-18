@@ -73,12 +73,8 @@ for seed in seeds:
     for map in map_holder:
         for item in map:
             if dest >= item.source and dest < (item.source + item.range):
-                dest = dest - item.source + item.range
+                dest = dest - item.source + item.destination
                 break
     loc.append(dest)
-print(loc)
-solution = []
-for i in loc:
-    if i in seeds:
-        print(i)
-        solution.append(i)
+
+print(min(loc))
